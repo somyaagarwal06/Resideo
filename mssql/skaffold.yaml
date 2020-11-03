@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta8
+kind: Config
+build:
+  local:
+    push: true
+  artifacts:
+  - image: greenqaacr.azurecr.io/sql-image
+deploy:
+  helm:
+    releases:
+    - name: mssql
+      chartPath: charts
+      artifactOverrides:
+        image: greenqaacr.azurecr.io/sql-image
